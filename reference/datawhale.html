@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datawhale-学用AI,从此开始</title>
+    <style>
+        :root {
+            --primary-color: #0066FF;
+            --primary-hover: #0052cc;
+            --text-main: #1d1d1f;
+            --text-light: #86868b;
+            --bg-color: #f5f5f7;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* 导航栏 */
+        header {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .header-actions .btn {
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        /* 按钮通用样式 */
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        /* 主视觉区 (Hero Section) */
+        .hero {
+            padding: 160px 20px 100px;
+            text-align: center;
+            background: linear-gradient(180deg, #ffffff 0%, var(--bg-color) 100%);
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero .subtitle {
+            font-size: 22px;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* 数据统计/特征区 */
+        .stats-section {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            padding: 40px 20px;
+            background-color: #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+
+        .stat-text {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* 核心版块 (内容卡片) */
+        .section {
+            padding: 100px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 18px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 102, 255, 0.1);
+            color: var(--primary-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--text-light);
+            flex-grow: 1;
+            margin-bottom: 25px;
+        }
+
+        .card-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .card-link:hover {
+            text-decoration: underline;
+        }
+
+        /* 底部页脚 */
+        footer {
+            background-color: #1d1d1f;
+            color: #fff;
+            padding: 60px 5% 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: left;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #a1a1a6;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: #fff;
+        }
+
+        .copyright {
+            color: #a1a1a6;
+            font-size: 14px;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 22H22L12 2Z" fill="#0066FF"/>
+            </svg>
+            Datawhale
+        </a>
+        <nav class="nav-links">
+            <a href="#">首页</a>
+            <a href="#">开源项目</a>
+            <a href="#">组队学习</a>
+            <a href="#">AI+X 微认证</a>
+            <a href="#">关于我们</a>
+        </nav>
+        <div class="header-actions">
+            <a href="#" class="btn btn-primary">登录 / 注册</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="subtitle">FOR THE LEARNER | 和学习者一起成长</div>
+        <h1>学用 AI，从此开始</h1>
+        <p>国内最大的 AI 开源学习社区。覆盖海内外 2000 多所院校，汇聚顶尖学者与企业工程师，持续推动人工智能领域的人才培养与开源生态建设。</p>
+        <div class="hero-btns">
+            <a href="#" class="btn btn-primary">开始学习</a>
+            <a href="#" class="btn btn-outline">探索开源项目</a>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="stat-item">
+            <div class="stat-num">2000+</div>
+            <div class="stat-text">覆盖海内外院校</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">50+</div>
+            <div class="stat-text">高质量开源教程</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">10W+</div>
+            <div class="stat-text">活跃学习者</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">100+</div>
+            <div class="stat-text">合作企业与机构</div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-header">
+            <h2>探索 Datawhale 核心板块</h2>
+            <p>从零基础通识到前沿深度学习，总有一个适合你的成长路径</p>
+        </div>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">O</div>
+                <h3>开源项目体系</h3>
+                <p>涵盖机器学习、深度学习、大模型、编程语言等多个方向的开源教程，如《动手学深度学习》、《蘑菇书强化学习》等开源经典书籍。</p>
+                <a href="#" class="card-link">查看完整项目库 &rarr;</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">T</div>
+                <h3>组队学习 (Team Learning)</h3>
+                <p>一个人走得快，一群人走得远。在这里，你可以和全国志同道合的伙伴一起打卡学习、互相答疑，告别拖延症。</p>
+                <a href="#" class="card-link">加入本期组队学习 &rarr;</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">C</div>
+                <h3>AI+X 微认证</h3>
+                <p>Datawhale 联合全球顶尖机构与行业领军企业深度合作推出的能力认证。用 AI 赋能各行各业，助力职场竞争力提升。</p>
+                <a href="#" class="card-link">了解认证详情 &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Datawhale</h4>
+                <p style="color: #a1a1a6; font-size: 14px;">致力于构建一个纯粹的学习圈子，帮助学习者更好地成长。</p>
+            </div>
+            <div class="footer-col">
+                <h4>快速链接</h4>
+                <a href="#">关于我们</a>
+                <a href="#">加入团队</a>
+                <a href="#">开源规约</a>
+            </div>
+            <div class="footer-col">
+                <h4>学习资源</h4>
+                <a href="#">GitHub 仓库</a>
+                <a href="#">OPEN 1+X 通识课</a>
+                <a href="#">学习者报告</a>
+            </div>
+            <div class="footer-col">
+                <h4>关注我们</h4>
+                <a href="#">微信公众号</a>
+                <a href="#">Bilibili (B站)</a>
+                <a href="#">知乎专栏</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Datawhale 团队版权所有. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>

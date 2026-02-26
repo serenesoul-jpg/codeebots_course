@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --color-codeebot-blue: #2b5cff;
+  --color-glass-white: rgba(255, 255, 255, 0.1);
+  --animate-float: float 3s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
+
+:root {
+  --background: #f8fafc; /* Slate-50 for light mode background */
+  --foreground: #0f172a; /* Slate-900 for text */
+}
+
+/* Optional: Dark mode support if needed later, but PRD focuses on light/clean style */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a;
+    --foreground: #f8fafc;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

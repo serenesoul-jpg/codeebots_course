@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeeBot: Codee - Snap, Code, Play</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #333;
+            background-color: #fff;
+        }
+        /* 导航栏 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5% ;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #2b5cff;
+            letter-spacing: 1px;
+        }
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .nav-icons span {
+            cursor: pointer;
+        }
+
+        /* 英雄横幅区 (Hero Section) */
+        .hero {
+            text-align: center;
+            padding: 120px 20px;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e2e8f0 100%);
+        }
+        .hero h1 {
+            font-size: 46px;
+            margin-bottom: 20px;
+            color: #111;
+        }
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            color: #555;
+        }
+        .btn {
+            padding: 15px 35px;
+            font-size: 16px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background-color: #2b5cff;
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background-color: #1a42cc;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background-color: #fff;
+            color: #2b5cff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .btn-secondary:hover {
+            background-color: #f8f9fa;
+            transform: translateY(-2px);
+        }
+
+        /* 功能特性区 */
+        .section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .section h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .section > p {
+            color: #777;
+            font-size: 18px;
+            margin-bottom: 50px;
+        }
+        .features-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .feature-box {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            flex: 1;
+            min-width: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .feature-box h3 {
+            font-size: 20px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        /* 商店及预售区 */
+        .store {
+            background-color: #f9fafb;
+        }
+        .product-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            max-width: 350px;
+            margin: 0 auto;
+        }
+        .price {
+            font-size: 36px;
+            color: #2b5cff;
+            font-weight: 800;
+            margin: 15px 0;
+        }
+
+        /* 联系表单区 */
+        .contact {
+            background-color: #fff;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        form label {
+            margin-top: 20px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        form input, form textarea {
+            padding: 12px 15px;
+            margin-top: 8px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 15px;
+            background: #fafafa;
+        }
+        form button {
+            margin-top: 30px;
+            background-color: #111;
+            color: #fff;
+            padding: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        form button:hover {
+            background-color: #333;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #111;
+            color: #888;
+            text-align: center;
+            padding: 60px 20px 40px;
+            font-size: 14px;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .footer-emails {
+            margin-bottom: 30px;
+            line-height: 2;
+        }
+        .copyright {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">CodeeBot</div>
+        <div class="nav-icons">
+            <span>Search</span>
+            <span>Cart (0)</span>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Snap, Code, Play – Your First Step to Create AI!</h1>
+        <p>The world's first AI-powered, screen-free coding lab.<br>Join now for up to 50% off when we launch in February 2026.</p>
+        <button class="btn btn-primary">Buy Today at 50% Discount as Beta User</button>
+        <button class="btn btn-secondary">Learn more</button>
+    </section>
+
+    <section class="section">
+        <h2>What Can You Do With CODEE?</h2>
+        <p>Build for Every Family</p>
+        
+        <div class="features-container">
+            <div class="feature-box">
+                <h3>CodeeBot is the STEM educational tool powered by ChatGPT</h3>
+                <button class="btn btn-secondary" style="font-size: 14px; padding: 12px 25px;">Learn how Kids can learn</button>
+            </div>
+            <div class="feature-box">
+                <h3>CodeeBot is also the creativity tool that goes beyond blocks</h3>
+                <button class="btn btn-secondary" style="font-size: 14px; padding: 12px 25px;">Learn how Makers can create</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section store">
+        <h2>Trending Now</h2>
+        <div class="product-card">
+            <h3>Codee VIP Pre-Order</h3>
+            <div class="price">$1.99</div>
+            <button class="btn btn-primary" style="width: 100%; margin: 10px 0 0 0;">Add to cart</button>
+        </div>
+    </section>
+
+    <section class="section contact">
+        <h2>Write to us about anything!</h2>
+        <form>
+            <label>Name</label>
+            <input type="text" placeholder="Enter your name" required>
+            
+            <label>Email</label>
+            <input type="email" placeholder="Enter your email" required>
+            
+            <label>Phone number</label>
+            <input type="tel" placeholder="Enter your phone number">
+            
+            <label>Comment</label>
+            <textarea rows="5" placeholder="Type your message here..." required></textarea>
+            
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-emails">
+            <p>Customer Support: <a href="mailto:support@codeebots.com">support@codeebots.com</a></p>
+            <p>Business Cooperation: <a href="mailto:official@codeebots.com">official@codeebots.com</a></p>
+        </div>
+        <div class="copyright">
+            <p>© 2026 Copyright by CODEE. All rights reserved. Designed with 💙 by Naturality Digital</p>
+        </div>
+    </footer>
+
+</body>
+</html>
